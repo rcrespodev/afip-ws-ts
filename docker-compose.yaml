@@ -1,0 +1,16 @@
+version: '3'
+
+networks:
+  afip-ws-api:
+    driver: bridge
+
+services:
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: on-failure
+    networks:
+      - afip-ws-api

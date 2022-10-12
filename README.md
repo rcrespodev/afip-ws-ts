@@ -48,11 +48,20 @@ Para obtener el certificado digital el primer paso es generar una clave privada 
 ```shell
 # private key:
 openssl genrsa -out private/private_key.key 2048 
+# or:
+make private_key
 
 # Csr:
-openssl req -new -key private/private_key.key -subj "/C=ar/O=afip/CN=wsaahomo/serialNumber=CUIT $CUIT" -out private/afip.csr
+openssl req -new -key private/private_key.key -subj "/C=ar/O=afipwsts/CN=wsaahomo/serialNumber=CUIT $CUIT" -out private/afip.csr
+# or:
+CUIT=$CUIT make csr
 ```
 
 En el siguiente [instructivo](https://www.afip.gob.ar/ws/WSASS/WSASS_como_adherirse.pdf) se detalla
 como adherirse al servicio de testing.
 El certificado obtenido debe ser guardado en private/$CUIT/cert.pem .
+
+Creación de request de acceso a partir de certificado .pem
+```shell
+openssl cms -sign -in private/MiLoginTicketRequest.xml -out private/MiLoginTicketRequest.xml.cms -signer private/20415892315/cert.pem -inkey private/private_key.key -nodetach -outform PEM
+```
