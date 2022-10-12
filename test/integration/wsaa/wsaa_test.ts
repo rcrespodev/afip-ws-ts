@@ -12,13 +12,13 @@ describe('FetchNewTokenAndSign', () => {
         const soapConnection = new WsaaSoapConnection(WsUrls.testing.login)
         const wsaa = new Wsaa(tokenRepository, soapConnection, new WsaaResponseParser(new XmlParser()))
         const token = await wsaa.GetTokenAndSign('20415892315', 'wsfex')
-        console.log(token)
         if (token.error !== undefined) { // Error
             expect(token.data).toBe(undefined)
             expect(token.status.http_code).not.toBe(200)
             return
         }
-
+        // console.log(token)
+        expect(await tokenRepository.GetToken('20415892315', 'wsfex')).not.toBe(undefined)
         expect(token.data).not.toBe(undefined)
         expect(token.status.http_code).toBe(200)
     })
