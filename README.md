@@ -20,25 +20,31 @@ Existen dos tipos de Web Services:
 - **WSN**: Web Services de negocio(_wsseg - R.G. N° 2.668, wsfexv1 - R.G. N° 2.758, wsct - R.G. N° 3.971",
 wsfev1 - R.G. N° 4.291, wsmtxca - R.G. N° 2.904 Y wsbfev1- R.G. N° 2.557_).
 
-Los WSN son públicos y accesible directamente a través de Internet. La autencticación para los WSN está regulada por
-el WSSA, que autentica a las aplicaciones clientes y les concede permiso de acceso a cada WSN mediante el otorgamiento
-de un Token de Acceso (TA).
-
-Cada TA es válido para un WSN en particular y tiene una validez limitada en el tiempo (actualmente, 12 horas).
-La aplicación cliente es la responsable de presentar al WSN el TA otorgado por el WSAA, de lo contrario el WSN
-rechaza la solicitud de acceso.
+Los WSN son públicos y accesible directamente a través de Internet.
+Todos contienen una cabecera **Auth** donde se deben enviar los tres datos clave que componen el objeto de autorización:
+```javascript
+// cabecera auth
+{
+    cuit: '30415892315'
+    token: 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI...'
+    sign: 'CiAgICA8aWQgc3JjPSJDTj13c2FhaG9tbywgTz1BRklQLCBDPUFSLCBTRVJJQUxOVU1CRVI9Q1VJVCAzMzY5MzQ1MDIzOS...'
+}
+```
+Para conseguir el token y el sign, los clientes deben comunicarse con el WSAA, quien response con el objeto Auth.
+Cada combinación de token, sign y cuit es válida para un WSN en particular y tiene una validez limitada de 24hs.
 
 La autenticación del cliente se realiza utilizando criptografía de clave pública basada en certificados digitales X.509.
-Esto significa que para conseguir un TA, se debe solicitar a Afip el certificado digital correspondiente bajo la CUIT
-que desea consumir el WSN como una EE.
+Esto significa que para conseguir el objeto Auth, se debe solicitar a Afip el certificado digital correspondiente bajo
+la CUIT que desea consumir el WSN como una EE.
 
 ## Features. <a name="features"></a>
 
-La presente API tiene como objetivo:
-- Proprcionar al cliente una capa de abstracción sobre los WSN.
+El servicio _Afip-ws-ts_ tiene las siguiente responsabilidades:
+- Proprcionar al cliente una capa de abstracción sobre los WSN. Permitiendo comunicarse con ellos mediante
+protocolo Http, en vez de SOAP.
 - Actuar como middleaware entre el Cliente Http y el WSAA. Si el cliente proporciona un certificado digital válido para
-una cuit determinada, la aplicación gestiona la capa de autenticación, recuperando o generando nuevos TA según sea
-necesario para ejecutar las llamadas a los WSN objetivo.
+una cuit determinada, la aplicación gestiona la capa de autenticación, recuperando o generando nuevos objetos Auth, 
+según sea necesario, para ejecutar las llamadas a los WSN objetivo.
 
 ## Usage. <a name="usage"></a>
 

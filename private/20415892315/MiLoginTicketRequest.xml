@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <loginTicketRequest>
   <header>
-    <uniqueId>1665670557</uniqueId>
-    <generationTime>2022-10-13T11:15:57</generationTime>
-    <expirationTime>2022-10-13T23:15:57</expirationTime>
+    <uniqueId>1665692335</uniqueId>
+    <generationTime>2022-10-13T17:18:55</generationTime>
+    <expirationTime>2022-10-14T05:18:55</expirationTime>
   </header>
   <service>wsfex</service>
 </loginTicketRequest>

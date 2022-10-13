@@ -1,10 +1,14 @@
 import {AppModule} from "./appModule";
 import {NestExpressApplication} from "@nestjs/platform-express";
 import {NestFactory} from "@nestjs/core";
+import {DependencyInjectionContainer} from "./api/dependencyInjectionContainer/dependencyInjectionContainer";
 
 export type NewHttpServerCommand = {
-    host: string
-    port: number
+    apiHost: string
+    apiPort: number
+    mongoDbUser: string
+    mongoDbPass: string
+    mongoDbDataBase: string
 }
 
 export class HttpServer {
@@ -13,9 +17,14 @@ export class HttpServer {
     private readonly _appModule: AppModule
 
     constructor(command: NewHttpServerCommand) {
-        this._port = command.port
-        this._host = command.host
+        this._port = command.apiPort
+        this._host = command.apiHost
         this._appModule = AppModule
+        new DependencyInjectionContainer({
+            mongoDbUser: command.mongoDbUser,
+            mongoDbPass: command.mongoDbPass,
+            mongoDbDataBase: command.mongoDbDataBase
+        })
     }
 
     Run() {

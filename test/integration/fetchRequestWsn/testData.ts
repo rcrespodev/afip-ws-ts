@@ -74,16 +74,30 @@ export const TestData: TableTest<Args, ApplicationResponse> = [
     // },
     {
         args: {
-            name: "Error. invalid payload", command: {
+            name: "Correct request. Should return http 200", command: {
                 auth: {cuit: "20415892315"},
-                body: {Cmp: {}},
-                targetService: {method: 'FEXAuthorize', wsnId: 'wsfex'}
+                body: {Mon_id: "012"},
+                targetService: {method: 'FEXGetPARAM_Ctz', wsnId: 'wsfex'}
             }
         },
         expected: {
             data: undefined,
-            error: `Error on Soap WSN Method execution. Description: {"FEXAuthorizeResult":{"FEXErr":{"ErrCode":1000,"ErrMsg":"Usuario no autorizado a realizar esta operacion. ValidacionDeToken: No apareció CUIT en lista de relaciones: 20415892311"},"FEXEvents":{"EventCode":0,"EventMsg":"Ok"}}}`,
-            headers: undefined, status: {http_code: 400}
+            error: undefined,
+            headers: undefined, status: {wsn_http_code: 200}
         }
     },
+    // {
+    //     args: {
+    //         name: "Error. invalid payload", command: {
+    //             auth: {cuit: "20415892311"},
+    //             body: {Cmp: {}},
+    //             targetService: {method: 'FEXAuthorize', wsnId: 'wsfex'}
+    //         }
+    //     },
+    //     expected: {
+    //         data: undefined,
+    //         error: `Error on Soap WSN Method execution. Description: {"FEXAuthorizeResult":{"FEXErr":{"ErrCode":1000,"ErrMsg":"Usuario no autorizado a realizar esta operacion. ValidacionDeToken: No apareció CUIT en lista de relaciones: 20415892311"},"FEXEvents":{"EventCode":0,"EventMsg":"Ok"}}}`,
+    //         headers: undefined, status: {wsn_http_code: 400}
+    //     }
+    // },
 ]

@@ -27,11 +27,7 @@ export class Wsn {
             },
             ...args,
         }
-        const [err, result] = await call(argsWithAuth)
-        if (err !== undefined) {
-            console.log(typeof err)
-            throw new Error(JSON.stringify(err))
-        }
+        const [result] = await call(argsWithAuth)
         return result
     }
 }

@@ -6,5 +6,10 @@ private_key:
 csr:
 	openssl req -new -key private/private_key.key -subj "/C=ar/O=afipwsts/CN=wsaahomo/serialNumber=CUIT $(CUIT)" -out private/$(CUIT)/afip.csr
 
+up: down run
+
+down:
+	docker-compose -f docker-compose.yaml stop
+
 run:
 	docker-compose -f docker-compose.yaml up -d --build

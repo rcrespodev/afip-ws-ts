@@ -37,7 +37,7 @@ export class FetchRequestWsn {
         }
 
         const response: ApplicationResponse = {
-            status: {http_code: 200},
+            status: {wsn_http_code: 200},
             headers: undefined,
             data: undefined,
             error: undefined,
@@ -50,7 +50,7 @@ export class FetchRequestWsn {
             return response
         } catch (e) {
             response.error = AppErrorHandler(e, 'Soap WSN Method execution').message
-            response.status.http_code = 400
+            response.status.wsn_http_code = 400
             return response
         }
     }

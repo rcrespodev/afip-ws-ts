@@ -18,9 +18,16 @@ export const TestData: TableTest<Args, ApplicationResponse> = [
             }
         },
         expected: {
-            data: undefined,
-            error: `Error on Soap WSN Method execution. Description: {"FEXAuthorizeResult":{"FEXErr":{"ErrCode":1000,"ErrMsg":"Usuario no autorizado a realizar esta operacion. ValidacionDeToken: No apareció CUIT en lista de relaciones: 20415892310"},"FEXEvents":{"EventCode":0,"EventMsg":"Ok"}}}`,
-            headers: undefined, status: {http_code: 400}
+            data: {
+                FEXAuthorizeResult: {
+                    FEXErr: {
+                        ErrCode: 1000,
+                        ErrMsg: "Usuario no autorizado a realizar esta operacion. ValidacionDeToken: No apareció CUIT en lista de relaciones: 20415892310"
+                    }, FEXEvents: {EventCode: 0, EventMsg: "Ok"}
+                }
+            },
+            error: undefined,
+            headers: undefined, status: {wsn_http_code: 200}
         }
     },
     {
@@ -32,23 +39,16 @@ export const TestData: TableTest<Args, ApplicationResponse> = [
             }
         },
         expected: {
-            data: undefined,
-            error: `Error on Soap WSN Method execution. Description: {"FEXAuthorizeResult":{"FEXErr":{"ErrCode":1014,"ErrMsg":"Campo auth.id invalido:0. Debe ser numerico mayor o igual  a 0 y menor de 100000000000000."},"FEXEvents":{"EventCode":0,"EventMsg":"Ok"}}}`,
-            headers: undefined, status: {http_code: 400}
+            error: undefined,
+            data: {
+                "FEXAuthorizeResult": {
+                    "FEXErr": {
+                        "ErrCode": 1014,
+                        "ErrMsg": "Campo auth.id invalido:0. Debe ser numerico mayor o igual  a 0 y menor de 100000000000000."
+                    }, "FEXEvents": {"EventCode": 0, "EventMsg": "Ok"}
+                }
+            },
+            headers: undefined, status: {wsn_http_code: 200}
         }
     },
-    // {
-    //     args: {
-    //         name: "Success. Correct request", command: {
-    //             auth: {cuit: "20415892315"},
-    //             body: {Cmp: {}},
-    //             targetService: {method: 'FEXAuthorize', wsnId: 'wsfex'}
-    //         }
-    //     },
-    //     expected: {
-    //         data: undefined,
-    //         error: `Error on Soap WSN Method execution. Description: {"FEXAuthorizeResult":{"FEXErr":{"ErrCode":1014,"ErrMsg":"Campo auth.id invalido:0. Debe ser numerico mayor o igual  a 0 y menor de 100000000000000."},"FEXEvents":{"EventCode":0,"EventMsg":"Ok"}}}`,
-    //         headers: undefined, status: {http_code: 500}
-    //     }
-    // },
 ]

@@ -2,16 +2,12 @@ import {WsaaMock} from "../../integration/fetchRequestWsn/wsaaMock";
 import {FetchRequestWsn, RequestCommand} from "../../../src/application/services/fetchRequestWsn";
 import {WsConnection} from "../../../src/application/domain/utils/wsConnection";
 import {TestData} from "./testData";
-// import {GetUrlWsn} from "../../../src/application/domain/utils/getUrlWsn";
-// import {WsSoapConnection} from "../../../src/application/infrastructure/wsSoapConnection";
-
 import {WsaaMockConnection} from "../../../src/application/infrastructure/wsaaSoapConnection/wsaaMockConnection";
 
 let soapConnection: WsConnection
 
 beforeEach(async () => {
     soapConnection = new WsaaMockConnection()
-    // soapConnection = new WsSoapConnection(GetUrlWsn('wsfex'))
 })
 
 describe('Fetch request unit test', () => {
