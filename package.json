@@ -55,7 +55,7 @@
       "^.+\\.(ts|tsx)$": "ts-jest"
     },
     "testMatch": [
-      "**/test/**/*_test.+(ts|tsx|js)"
+      "**/test/**/*_test.+(ts|tsx)"
     ]
   }
 }

@@ -1,4 +1,4 @@
-import {Wsaa} from "../../../src/application/domain/wsaa/wsaa";
+import {WsaaImplementation} from "../../../src/application/domain/wsaa/wsaaImplementation";
 import {MockTokenRepository} from "../../../src/application/infrastructure/token_repository/mock_token_repository";
 import {WsaaMockConnection} from "../../../src/application/infrastructure/wsaaSoapConnection/wsaaMockConnection";
 import {WsaaResponseParser} from "../../../src/application/domain/wsaa/wsaaResponseParser";
@@ -6,10 +6,10 @@ import {XmlParser} from "../../../src/application/domain/utils/xmlParser";
 // @ts-ignore
 import {TestData} from './testData';
 import {TokenRepository} from "../../../src/application/domain/wsaa/token_repository";
-import {WsaaConnection} from "../../../src/application/domain/wsaa/wsaaConnection";
+import {WsConnection} from "../../../src/application/domain/utils/wsConnection";
 
 let tokenRepository: TokenRepository
-let soapConnection: WsaaConnection
+let soapConnection: WsConnection
 
 beforeEach(async () => {
     tokenRepository = await new MockTokenRepository(mockRepositroryData)
@@ -18,7 +18,7 @@ beforeEach(async () => {
 
 describe('Get Token And Sign unit test', () => {
     test.each(TestData)('GetTokenAndSign() - $args.name', async ({args, expected}) => {
-        const wsaa = new Wsaa(tokenRepository, soapConnection, new WsaaResponseParser(new XmlParser()))
+        const wsaa = new WsaaImplementation(tokenRepository, soapConnection, new WsaaResponseParser(new XmlParser()))
         const actual = await wsaa.GetTokenAndSign(args.cuit, args.service)
         expect(actual).toStrictEqual(expected)
         if (actual.error !== undefined) {

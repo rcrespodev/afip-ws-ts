@@ -1,4 +1,4 @@
-type AllowedServicesWsn = "wsfex" | "wsfe"
+type AllowedServicesWsn = 'wsfex' | 'wsfe'
 
 export class WsnService {
     private readonly _wsnId: AllowedServicesWsn

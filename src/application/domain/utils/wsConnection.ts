@@ -1,3 +1,3 @@
-export interface WsaaConnection {
+export interface WsConnection {
     SoapConnection(): Promise<any>
 }

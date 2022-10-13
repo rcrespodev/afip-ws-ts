@@ -1,14 +1,14 @@
-import {WsaaConnection} from "../../domain/wsaa/wsaaConnection";
-import {createClientAsync} from "soap";
+import {WsConnection} from "../domain/utils/wsConnection";
+import {Client, createClientAsync} from "soap";
 
-export class WsaaSoapConnection implements WsaaConnection {
+export class WsSoapConnection implements WsConnection {
     private readonly _wsdlUrl: string
 
     constructor(wsdlUrl: string) {
         this._wsdlUrl = wsdlUrl
     }
 
-    async SoapConnection(): Promise<any> {
+    async SoapConnection(): Promise<Client> {
         return await createClientAsync(this._wsdlUrl, {
             namespaceArrayElements: false,
         })
