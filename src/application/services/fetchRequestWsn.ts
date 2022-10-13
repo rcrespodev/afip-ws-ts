@@ -5,6 +5,7 @@ import {WsConnection} from "../domain/utils/wsConnection";
 import {AppErrorHandler} from "../domain/utils/appErrorHandler";
 import {WsSoapConnection} from "../infrastructure/wsSoapConnection";
 import {GetUrlWsn} from "../domain/utils/getUrlWsn";
+import {Injectable} from "@nestjs/common";
 
 export type RequestCommand = {
     auth: {
@@ -17,6 +18,7 @@ export type RequestCommand = {
     body: any
 }
 
+@Injectable()
 export class FetchRequestWsn {
     private readonly _wsaa: Wsaa
 

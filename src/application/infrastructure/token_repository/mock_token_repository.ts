@@ -1,5 +1,7 @@
 import {TokenRepository, TokenSchema} from "../../domain/wsaa/token_repository";
+import {Injectable} from "@nestjs/common";
 
+@Injectable()
 export class MockTokenRepository implements TokenRepository{
     private readonly _data: Map<string, TokenSchema>
     constructor(data: TokenSchema[]) {

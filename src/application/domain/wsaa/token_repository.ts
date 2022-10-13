@@ -1,3 +1,4 @@
+
 export interface TokenRepository {
     UpdateToken(schema: TokenSchema): Promise<void>
     GetToken(cuit: string, service: string): Promise<TokenSchema | undefined>

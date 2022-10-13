@@ -6,7 +6,9 @@ import {ApplicationResponse} from "../utils/applicationResponse";
 import {AppErrorHandler} from "../utils/appErrorHandler";
 import {WsnService} from "../wsn/servicesWsn";
 import {Wsaa} from "./wsaa";
+import {Injectable} from "@nestjs/common";
 
+@Injectable()
 export class WsaaImplementation implements Wsaa {
     private readonly _tokenRepository: TokenRepository
     private readonly _wsaaSoapConnection: WsConnection

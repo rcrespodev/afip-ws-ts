@@ -1,6 +1,8 @@
 import {TokenSchema} from "./token_repository";
 import {XmlParser} from "../utils/xmlParser";
+import {Injectable} from "@nestjs/common";
 
+@Injectable()
 export class WsaaResponseParser {
     private readonly _xmlParser: XmlParser
 

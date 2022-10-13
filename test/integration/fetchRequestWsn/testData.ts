@@ -75,7 +75,7 @@ export const TestData: TableTest<Args, ApplicationResponse> = [
     {
         args: {
             name: "Error. invalid payload", command: {
-                auth: {cuit: "20415892311"},
+                auth: {cuit: "20415892315"},
                 body: {Cmp: {}},
                 targetService: {method: 'FEXAuthorize', wsnId: 'wsfex'}
             }
