@@ -4,6 +4,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 describe('mongo db test', () => {
+    jest.setTimeout(30000)
     it('insert document', async () => {
         const repository = new MongodbTokenRepository({
             pass: process.env.MONGO_DB_PASS,
