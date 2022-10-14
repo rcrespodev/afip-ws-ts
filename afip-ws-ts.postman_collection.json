@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "2aee0b6a-86c3-459f-bc26-3ec207464065",
+		"name": "afip-ws-ts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "WSFE-FECompUltimoAutorizado (Ws Factura electrónica-informar documento)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"auth\": {\n        \"cuit\": \"20415892315\"\n    },\n    \"targetService\": {\n        \"wsnId\": \"wsfe\",\n        \"method\": \"FECompUltimoAutorizado\"\n    },\n    \"body\": {\n        \"PtoVta\": 12,\n        \"CbteTipo\": 1\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/v1/wsn",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"wsn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WSFE-FECAESolicitar (Ws Factura electrónica-informar documento)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"auth\": {\n        \"cuit\": \"20415892315\"\n    },\n    \"targetService\": {\n        \"wsnId\": \"wsfe\",\n        \"method\": \"FECAESolicitar\"\n    },\n    \"body\": {\n        \"FeCAEReq\": {\n            \"FeCabReq\": {\n                \"CantReg\": 1,\n                \"PtoVta\": 12,\n                \"CbteTipo\": 1\n            },\n            \"FeDetReq\": {\n                \"FECAEDetRequest\": {\n                    \"Concepto\": \"1\",\n                    \"DocTipo\": 80,\n                    \"DocNro\": 20111111112,\n                    \"CbteDesde\": 1,\n                    \"CbteHasta\": 1,\n                    \"CbteFch\": \"20221013\",\n                    \"ImpTotal\": 184.05,\n                    \"ImpTotConc\": 0,\n                    \"ImpNeto\": 150,\n                    \"ImpOpEx\": 0,\n                    \"ImpTrib\": 7.8,\n                    \"ImpIVA\": 26.25,\n                    \"FchServDesd\": \"\",\n                    \"FchServHast\": \"\",\n                    \"FchVtoPag\": \"\",\n                    \"MonId\": \"PES\",\n                    \"MonCotiz\": \"1\",\n                    \"Tributos\": [\n                        {\n                            \"Tributo\": {\n                                \"Id\": 99,\n                                \"Desc\": \"Impuesto Municipal Matanza\",\n                                \"BaseImp\": 150,\n                                \"Alic\": 5.2,\n                                \"Importe\": 7.8\n                            }\n                        }\n                    ],\n                    \"Iva\": [\n                        {\n                            \"AlicIva\": {\n                                \"Id\": 5,\n                                \"BaseImp\": 100,\n                                \"Importe\": 21\n                            }\n                        },\n                                                {\n                            \"AlicIva\": {\n                                \"Id\": 4,\n                                \"BaseImp\": 50,\n                                \"Importe\": 5.25\n                            }\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/v1/wsn",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"wsn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WSFEX-FEXGetPARAM_Ctz (Ws Factura de exportación-tipo de cambio)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"auth\": {\n        \"cuit\": \"20415892315\"\n    },\n    \"targetService\": {\n        \"wsnId\": \"wsfex\",\n        \"method\": \"FEXGetPARAM_Ctz\"\n    },\n    \"body\": {\n        \"Mon_id\": \"012\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/v1/wsn",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"wsn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WSFEX-FEXAuthorize (Ws Factura de exportación-infromar comprobante)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"auth\": {\n        \"cuit\": \"20415892315\"\n    },\n    \"targetService\": {\n        \"wsnId\": \"wsfex\",\n        \"method\": \"FEXAuthorize\"\n    },\n    \"body\": {\n        \"Cmp\": {\n            \"Id\": 1,\n            \"Fecha_cbte\": 20221013,\n            \"Cbte_Tipo\": 19,\n            \"Punto_vta\": 2,\n            \"Cbte_nro\": 1,\n            \"Tipo_expo\": 1,\n            \"Permiso_existente\": \"S\",\n            \"Permisos\": [\n                {\n                    \"Permiso\": {\n                        \"Id_permiso\": \"09052EC01006154G\",\n                        \"Dst_merc\": 203\n                    }\n                },\n                {\n                    \"Permiso\": {\n                        \"Id_permiso\": \"09052EC01006154G\",\n                        \"Dst_merc\": 202\n                    }\n                }\n            ],\n            \"Dst_cmp\": 203,\n            \"Cliente\": \"Joao Da Silva\",\n            \"Cuit_pais_cliente\": 50000000016,\n            \"Domicilio_cliente\": \"Rua 76 km 34.5 Alagoas\",\n            \"Id_impositivo\": \"PJ54482221-l\",\n            \"Moneda_Id\": \"012\",\n            \"Moneda_ctz\": 12.285,\n            \"Obs_comerciale\": \"Sin observaciones\",\n            \"Imp_total\": \"500\",\n            \"Obs\": \"\",\n            \"Forma_pago\": \"Contado\",\n            \"Incoterms\": \"CIF\",\n            \"Incoterms_Ds\": \"Texto\",\n            \"Idioma_cbte\": \"1\",\n            \"Items\": [\n                {\n                    \"Item\": {\n                        \"Pro_codigo\": \"PRO1\",\n                        \"Pro_ds\": \"Producto\",\n                        \"Pro_qty\": \"2\",\n                        \"Pro_umed\": \"7\",\n                        \"Pro_precio_uni\": \"250\",\n                        \"Pro_total_item\": \"500\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/v1/wsn",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"wsn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
