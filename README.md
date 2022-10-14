@@ -2,15 +2,15 @@
 Consume Afip Ws using an abstraction layer Rest Http as middleware.
 
 # Table of contents:
-- [Architecture Afip WS](#arquitectura_ws_afip)
-- [Features](#features)
-- [Overview](#overview)
-- [Usage](#usage)
-  - [Manual Steps](#manual_steps)
-  - [Install](#install)
-  - [Test](#test)
-  - [Run](#run)
-  - [Consume](#consume)
+- [Architecture Afip WS.](#arquitectura_ws_afip)
+- [Features.](#features)
+- [Overview.](#overview)
+- [Usage.](#usage)
+  - [Manual Steps.](#manual_steps)
+  - [Install.](#install)
+  - [Test.](#test)
+  - [Run.](#run)
+  - [Consume.](#consume)
 
 
 ## Architecture Afip WS. <a name="arquitectura_ws_afip"></a>
