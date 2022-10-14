@@ -49,7 +49,7 @@ o generando nuevos objetos Auth, seg√∫n sea necesario, para luego ejecutar el m√
 devolver la respuesta al usuario.
 
 ## Overview. <a name="overview"></a>
-[Diagram](diagram.png)
+[Diagram]<img src="diagram.png">
 
 ## Usage. <a name="usage"></a>
 
