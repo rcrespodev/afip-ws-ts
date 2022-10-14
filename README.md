@@ -103,8 +103,15 @@ npm test
 Build, test and deploy in single docker network.
 ```shell
 make up
+
+# then
+docker ps
+#CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                                       NAMES
+#abd3bdf3ff26   afip-ws-ts_application   "docker-entrypoint.s…"   7 seconds ago   Up 6 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   afip-ws-ts_application_1
 ```
 
 ### Consume. <a name="consume"></a>
 Este repositorio cuenta con una [colección postman](afip-ws-ts.postman_collection.json) lista para consumir
 métodos del wsfe(Factura electrónica) y wsfex(Factura electrónica de exportación).
+
+<img src="postman_img.png" alt="postman example">
